@@ -1,0 +1,23 @@
+#zone-scenes{
+width: 70%;
+margin-left: 15%;
+margin-top: 2%;
+border-radius: 10px;
+}
+
+
+
+#bouton-jouer{
+    font-size:large;
+    padding:8px;
+    border-radius: 5px;
+    margin-left: 47%;
+    margin-top: 1%;
+}
+#bouton-jouer2{
+    font-size:large;
+    padding:8px;
+    border-radius: 5px;
+    margin-left: 57%;
+    margin-top: 1%;
+}
