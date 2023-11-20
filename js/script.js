@@ -7,16 +7,17 @@ let scenes = undefined;
 
 let images = undefined;
 
+
 window.onload= function(){
     recupererImages();
 }
-async function recupererScenes(){
+async function recupererScenes(numero){
 
-    let { data, error } = await SUPABASE_CLIENT.from('Scenes').select('*');
+    let { data, error } = await SUPABASE_CLIENT.from('Scenes').select('*').eq('Numéro de scène', numero.toString());
 
     console.log(JSON.stringify(data));
 
-    scenes=data;
+    scenes=data[0];
 }
 
 async function recupererImages(){
@@ -30,8 +31,8 @@ async function recupererImages(){
 
 
 
-function afficherScenes(){
-    recupererScenes().then(
+function afficherScenes(numero){
+    recupererScenes(numero).then(
         function(value) {listerScenes(value)},
         function(error) {afficherErreurs(error)}
             );
@@ -40,44 +41,30 @@ function afficherScenes(){
 
 function listerScenes(donnees){
 
-    console.log(scenes[0]['Numéro de scène']);
+    console.log(scenes['Numéro de scène']);
     let zoneScenes = document.getElementById('zone-scenes');
     let Btn1 = document.getElementById('choix1');
     let Btn2 = document.getElementById('choix2');
-    let numeroImage= scenes[0]['Numéro dimages'];
-    let textChoix1 = scenes[0]['Texte du choix 1'];
-    let textChoix2 = scenes[0]['Texte du choix 2'];
-    let URLImage=images[numeroImage]["URL"];
+    let numeroImage= scenes['Numéro dimages'];
+    let textChoix1 = scenes['Texte du choix 1'];
+    let textChoix2 = scenes['Texte du choix 2'];
+    let URLImage= trouverURL(scenes['Numéro dimages']);
     zoneScenes.innerHTML='<img src="'+ URLImage+'" width=100%>' ;
-    Btn1.innerHTML='<input type="button" onclick="afficherZelda()" value="'+textChoix1+'" id="bouton-jouer">'
-    Btn2.innerHTML='<input type="button" onclick="afficherGanon()" value="'+textChoix2+'" id="bouton-jouer2">'
-}
-function afficherZelda(){
-    console.log(scenes[1]['Numéro de scène']);
-    let zoneScenes = document.getElementById('zone-scenes');
-    let Btn1 = document.getElementById('choix1');
-    let Btn2 = document.getElementById('choix2');
-    let numeroImage= scenes[1]['Numéro dimages'];
-    let textChoix1 = scenes[1]['Texte du choix 1'];
-    let textChoix2 = scenes[1]['Texte du choix 2'];
-    let URLImage=images[numeroImage]["URL"];
-    zoneScenes.innerHTML='<img src="'+ URLImage+'" width=100%>' ;
-    Btn1.innerHTML='<input type="button" onclick="afficherZelda()" value="'+textChoix1+'" id="bouton-jouer">'
-    Btn2.innerHTML='<input type="button" onclick="afficherGanon()" value="'+textChoix2+'" id="bouton-jouer2">'
+    if (typeof scenes['Texte'] == 'string') {
+        console.log("QQQQQQ")
+        Btn1.innerHTML='<input type="button" onclick="afficherScenes(' + scenes['Numéro de scène où mène le choix 1'] + ')" value="'+textChoix1+'" id="bouton-jouer">'
+        Btn2.innerHTML='<input type="button" onclick="afficherScenes(' + scenes['Numéro de scène où mène le choix 2'] + ')" value="'+textChoix2+'" id="bouton-jouer2">'
+    }
+
 }
 
-function afficherGanon(){
-    console.log(scenes[2]['Numéro de scène']);
-    let zoneScenes = document.getElementById('zone-scenes');
-    let Btn1 = document.getElementById('choix1');
-    let Btn2 = document.getElementById('choix2');
-    let numeroImage= scenes[2]['Numéro dimages'];
-    let textChoix1 = scenes[2]['Texte du choix 1'];
-    let textChoix2 = scenes[2]['Texte du choix 2'];
-    let URLImage=images[numeroImage]["URL"];
-    zoneScenes.innerHTML='<img src="'+ URLImage+'" width=100%>' ;
-    Btn1.innerHTML='<input type="button" onclick="afficherZelda()" value="'+textChoix1+'" id="bouton-jouer">'
-    Btn2.innerHTML='<input type="button" onclick="afficherGanon()" value="'+textChoix2+'" id="bouton-jouer2">'
+
+function trouverURL(numeroRecherche){
+for(let i=0; i<images.length; i++){
+    if(numeroRecherche== images[i]['Numéro']){
+        return images[i]['URL'];
+ }
+}
 }
     
 
