@@ -21,3 +21,10 @@ border-radius: 10px;
     margin-left: 57%;
     margin-top: 1%;
 }
+
+#texteFooter{
+    font-family: "Acme";
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
