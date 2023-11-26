@@ -1,25 +1,68 @@
 #zone-scenes{
-width: 70%;
-margin-left: 15%;
-margin-top: 2%;
-border-radius: 10px;
+text-align: center;  
+margin-top: 1%;
 }
 
+#zone-texte{
+    text-align: center;  
+    margin-top: 1%;
+    font-size: larger;
+    width: 70%;
+   margin-left: 15%;
+}
+#Boutons{
+    text-align: center;
+}
 
+#choix2{
+    width: 15%;
+    margin-right: 5%;
+margin-top: 10px;
+margin-bottom: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 250px;
+}
+#choix1{
+width: 15%;
+margin-top: 10px;
+margin-bottom: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 250px;
+}
+#choix3{
+    width: 15%;
+    margin-left: 5%;
+margin-top: 10px;
+margin-bottom: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 250px;
+}
 
 #bouton-jouer{
     font-size:large;
-    padding:8px;
+    padding:12px;
     border-radius: 5px;
-    margin-left: 47%;
-    margin-top: 1%;
+
 }
 #bouton-jouer2{
+
     font-size:large;
-    padding:8px;
+    padding:12px;
     border-radius: 5px;
-    margin-left: 57%;
-    margin-top: 1%;
+
+}
+#bouton-jouer3{
+
+    font-size:large;
+    padding:12px;
+    border-radius: 5px;
+
 }
 
 #texteFooter{
