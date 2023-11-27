@@ -63,8 +63,8 @@ function listerScenes(donnees){
     let textChoix3 = scenes['Texte du choix 3'];
     let Texte = scenes['Texte'];
     let URLImage= trouverURL(scenes['Numéro dimages']);
-    zoneScenes.innerHTML='<img src="'+ URLImage+'" height=500px>' ;
-    zoneTexte.innerHTML= Texte;
+    zoneScenes.innerHTML='<img src="'+ URLImage+'" height=700px>' ;
+    
     let URLMusique= trouverURLMusique(scenes['Numéro de musique']);
     let URLEffetSonore= trouverURLMusique(scenes['Effet sonore associé au choix 1']);
     let URLEffetSonore2= trouverURLMusique(scenes['Effet sonore associé au choix 2']);
@@ -73,31 +73,33 @@ function listerScenes(donnees){
     musiqueTheme.play();
     musiqueTheme.loop=true;
     console.log(URLMusique);
-    if (typeof scenes['Texte du choix 1'] == 'string') {
-        console.log("QQQQQQ")
-        Btn1.innerHTML='<input type="button" onclick="afficherScenes(' + scenes['Numéro de scène où mène le choix 1'] + ')" value="'+textChoix1+'" id="bouton-jouer">'
+    if (typeof scenes['Texte'] == 'string') {
+       zoneTexte.innerHTML= Texte; 
+       zoneTexte.style.backgroundColor='rgba(211, 211, 211, 0.8)';
     }
     else{
-        Btn1.innerHTML=' '
+    }
+    if (typeof scenes['Texte du choix 1'] == 'string') {
+        Btn1.innerHTML='<input type="button" onclick="afficherScenes(' + scenes['Numéro de scène où mène le choix 1'] + ')" value="'+textChoix1+'" id="bouton-jouer">';
+    }
+    else{
+        Btn1.innerHTML=' ';
     }
 
     if (typeof scenes['Texte du choix 2'] == 'string') {
-        console.log("PPPPP")
-        Btn2.innerHTML='<input type="button" onclick="afficherScenes(' + scenes['Numéro de scène où mène le choix 2'] + ')" value="'+textChoix2+'" id="bouton-jouer2">'
+        Btn2.innerHTML='<input type="button" onclick="afficherScenes(' + scenes['Numéro de scène où mène le choix 2'] + ')" value="'+textChoix2+'" id="bouton-jouer2">';
     }
     else{
-        Btn2.innerHTML=' '
+        Btn2.innerHTML=' ';
     }
 
     if (typeof scenes['Texte du choix 3'] == 'string') {
-        console.log("WWWW")
-        Btn3.innerHTML='<input type="button" onclick="afficherScenes(' + scenes['Numéro de scène où mène le choix 2'] + ')" value="'+textChoix3+'" id="bouton-jouer3">'
+        Btn3.innerHTML='<input type="button" onclick="afficherScenes(' + scenes['Numéro de scène où mène le choix 3'] + ')" value="'+textChoix3+'" id="bouton-jouer3">';
     }
     else{
-        Btn3.innerHTML=' '
+        Btn3.innerHTML=' ';
     }
     if (typeof scenes['Effet sonore associé au choix 1'] == 'number') {
-        console.log("YYYY")
         effetSonore = new Audio(URLEffetSonore);
         musiqueTheme.pause();
         effetSonore.play();
@@ -105,7 +107,6 @@ function listerScenes(donnees){
     }
 
     if (typeof scenes['Effet sonore associé au choix 2'] == 'number') {
-        console.log("YYYY")
         effetSonore = new Audio(URLEffetSonore2);
         musiqueTheme.pause();
         effetSonore.play();
@@ -113,7 +114,6 @@ function listerScenes(donnees){
     }
 
     if (typeof scenes['Effet sonore associé au choix 3'] == 'number') {
-        console.log("YYYY")
         effetSonore = new Audio(URLEffetSonore3);
         musiqueTheme.pause();
         effetSonore.play();
@@ -136,7 +136,7 @@ function jouerMusique(donnees){
     let musiqueTheme = new Audio(URLMusique);
     musiqueTheme.play();
     musiqueTheme.loop=true;
-    console.log("LLLL"+URLMusique);
+    console.log(URLMusique);
 }
 
 function trouverURLMusique(numeroRecherche){
