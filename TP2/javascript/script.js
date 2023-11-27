@@ -70,8 +70,8 @@ function listerScenes(donnees){
     let URLEffetSonore2= trouverURLMusique(scenes['Effet sonore associé au choix 2']);
     let URLEffetSonore3= trouverURLMusique(scenes['Effet sonore associé au choix 3']);
     let musiqueTheme = new Audio(URLMusique);
-    //musiqueTheme.play();
-    //musiqueTheme.loop=true;
+    musiqueTheme.play();
+    musiqueTheme.loop=true;
     console.log(URLMusique);
     if (typeof scenes['Texte'] == 'string') {
        zoneTexte.innerHTML= Texte; 
